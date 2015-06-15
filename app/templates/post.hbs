@@ -12,6 +12,16 @@
 
 <hr>
 
+
+
 <div class="body">
   {{model.body}}
 </div>
+
+<hr>
+
+{{#each model.comment as |b|}}
+<ul>
+      <li>{{b.text}}</li>
+</ul>
+{{/each}}

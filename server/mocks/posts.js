@@ -30,13 +30,15 @@ module.exports = function(app) {
       id: 1,
       title: 'bananas',
       body: "A banana is an edible fruit",
-      author: 1
+      author: 1,
+      comment: [1,3]
     },
     {
       id: 2,
       title: 'monkey',
       body: "Monkeys are haplorhine",
-      author: 1
+      author: 1,
+      comment: [2]
     }
   ];
 
@@ -48,10 +50,26 @@ module.exports = function(app) {
     }
   ];
 
+  var comment = [
+    {
+      id: 1,
+      text: "this is so interesting omg"
+    },
+    {
+      id: 2,
+      text: "hahah your 'SO' makes me want to punch myself in the face."
+    },
+    {
+      id: 3,
+      text: "al;ksfjlaweighwoeigj"
+    }
+  ];
+
   postsRouter.get('/', function(req, res) {
     res.send({
       'posts': posts,
-      'authors': authors
+      'authors': authors,
+      "comment": comment
     });
   });
 
@@ -64,7 +82,8 @@ module.exports = function(app) {
       "post": posts.find(function(post){
         return post.id == req.params.id
       }),
-      "authors": authors
+      "authors": authors,
+      "comment": comment
     });
   });
 
